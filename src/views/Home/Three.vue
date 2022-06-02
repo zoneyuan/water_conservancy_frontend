@@ -85,27 +85,42 @@ export default defineComponent({
           case "倾斜模型":
             const tileset = viewer.scene.primitives.add(
               new Cesium.Cesium3DTileset({
-                url: "http://localhost:4000/geodata/3dtiles/zhanlangguan/tileset.json",
+                url: route.params.serviceUrl,
               })
             );
+           /*  const tile1 = viewer.scene.primitives.add(
+              new Cesium.Cesium3DTileset({
+                url: "http://localhost:4000/geodata/3dtiles/bridge/tileset.json",
+              })
+            ); */
             tileset.readyPromise.then(function (tileset) {
-              viewer.camera.viewBoundingSphere(
+              viewer.zoomTo(
+                tileset,
+                new Cesium.HeadingPitchRange(-0.5, -0.5, 800)
+              );
+              /*  viewer.camera.viewBoundingSphere(
                 tileset.boundingSphere,
                 new Cesium.HeadingPitchRange(0, -0.5, 0)
-              );
+              ); */
             });
+
             break;
           case "BIM":
             const tile = viewer.scene.primitives.add(
               new Cesium.Cesium3DTileset({
-                url: "http://localhost:4000/geodata/3dtiles/bridge/tileset.json",
+                url: "http://localhost:4000/geodata/3dtiles/新集主厂房/tileset.json",
               })
             );
-            tile.readyPromise.then(function (tile) {
+            tile.readyPromise.then(function (tileset) {
+              viewer.zoomTo(
+                tileset,
+                new Cesium.HeadingPitchRange(-0.5, -0.5, 800)
+              );
+           /*  tile.readyPromise.then(function (tile) {
               viewer.camera.viewBoundingSphere(
                 tile.boundingSphere,
                 new Cesium.HeadingPitchRange(0, -0.5, 0)
-              );
+              ); */
             });
             break;
           default:
@@ -126,8 +141,8 @@ export default defineComponent({
               viewer.imageryLayers.addImageryProvider(provider);
             viewer.camera.flyTo({
               destination: Cesium.Cartesian3.fromDegrees(
-                117.1882,
-                29.1838,
+                111.5882,
+                32.3838,
                 40000
               ),
               orientation: {

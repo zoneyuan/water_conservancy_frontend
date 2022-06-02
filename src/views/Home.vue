@@ -2,7 +2,7 @@
   <div class="box">
     <!-- 头部 -->
     <div class="header">
-      <span>湖北省水利水电规划勘测设计院 / 地理数据共享平台</span>
+      <span>湖北省水利水电规划勘测设计院 / 水利地理空间大数据综合管理与可视化</span>
     </div>
 
     <!-- 横向导航区域 -->
@@ -70,6 +70,7 @@ export default defineComponent({
       { name: "首页", path: "homepage" },
       { name: "地理数据编目", path: "geodata" },
       { name: "区域检索", path: "searchdata" },
+      { name: "工程案例", path: "construction"},
       { name: "服务资源", path: "service" },
       { name: "专题应用", path: "application" },
       { name: "数据详情", path: "cadviewer" },

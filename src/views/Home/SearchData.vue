@@ -12,75 +12,44 @@
                <a-row>
               <a-form-item  style="width:10%" v-bind="validateInfos.searchtype">
                 <a-select                  
-                  v-model:value="modelRef.searchtype"
-                
+                  v-model:value="modelRef.searchtype" placeholder="请选择查询方式"
                 >
-                  <a-select-option value="reigon">行政区划</a-select-option>
-                  <a-select-option value="latlon">经纬度</a-select-option>
+                  <a-select-option value="reigon">按地名查询</a-select-option>
+                  <a-select-option value="latlon">按经纬度查询</a-select-option>
                 </a-select>
               </a-form-item>
-              <a-form-item  style="width:10%" v-bind="validateInfos.city">
+              <p> &nbsp;地名：</p>
+              <a-form-item style="width:10%" v-bind="validateInfos.reigonname">
+                <a-input  v-model:value="modelRef.reigonname" placeholder="请输入所在地名"> </a-input>
+              </a-form-item>
+<!--               <a-form-item  style="width:10%" v-bind="validateInfos.city">
                 <a-select
                   v-model:value="modelRef.city"
                 >
-                  <a-select-option value="地级市">地级市</a-select-option>
-                  <a-select-option value="武汉市">武汉市</a-select-option>
-                  <a-select-option value="黄石市">黄石市</a-select-option>
-                  <a-select-option value="十堰市">十堰市</a-select-option>
-                  <a-select-option value="宜昌市">宜昌市</a-select-option>
-                  <a-select-option value="襄阳市">襄阳市</a-select-option>
-                  <a-select-option value="鄂州市">鄂州市</a-select-option>
-                  <a-select-option value="荆门市">荆门市</a-select-option>
-                  <a-select-option value="孝感市">孝感市</a-select-option>
-                  <a-select-option value="荆州市">荆州市</a-select-option>
-                  <a-select-option value="黄冈市">黄冈市</a-select-option>
-                  <a-select-option value="咸宁市">咸宁市</a-select-option>
-                  <a-select-option value="随州市">随州市</a-select-option>
-                  <a-select-option value="恩施土家族苗族"
-                    >恩施土家族苗族</a-select-option
-                  >
-                  <a-select-option value="仙桃市">仙桃市</a-select-option>
-                  <a-select-option value="潜江市">潜江市</a-select-option>
-                  <a-select-option value="天门市">天门市</a-select-option>
-                  <a-select-option value="神农架林区"
-                    >神农架林区</a-select-option
-                  >
+                 
                 </a-select>
               </a-form-item>
               <a-form-item  style="width:10%" v-bind="validateInfos.county">
                 <a-select                  
                   v-model:value="modelRef.county"
                 >
-                  <a-select-option value="区县旗">区县旗</a-select-option>
-                  <a-select-option value="蔡甸区">蔡甸区</a-select-option>
-                  <a-select-option value="东西湖区">东西湖区</a-select-option>
-                  <a-select-option value="汉南区">汉南区</a-select-option>
-                  <a-select-option value="汉阳区">汉阳区</a-select-option>
-                  <a-select-option value="洪山区">洪山区</a-select-option>
-                  <a-select-option value="黄陂区">黄陂区</a-select-option>
-                  <a-select-option value="江岸区">江岸区</a-select-option>
-                  <a-select-option value="江汉区">江汉区</a-select-option>
-                  <a-select-option value="江夏区">江夏区</a-select-option>
-                  <a-select-option value="硚口区">硚口区</a-select-option>
-                  <a-select-option value="青山区">青山区</a-select-option>
-                  <a-select-option value="武昌区">武昌区</a-select-option>
-                  <a-select-option value="新洲区">新洲区</a-select-option>
+                 
                 </a-select>
-              </a-form-item>
+              </a-form-item> -->
               <p> &nbsp;经度：</p>
-              <a-form-item style="width:5%" v-bind="validateInfos.lon0">
-                <a-input  v-model:value="modelRef.lon0" placeholder="请输入岗位"> </a-input>
+              <a-form-item style="width:10%" v-bind="validateInfos.lon0">
+                <a-input  v-model:value="modelRef.lon0" placeholder="请输入位置"> </a-input>
               </a-form-item>
               {{ " - " }}
-              <a-form-item style="width:5%" v-bind="validateInfos.lon1">
+              <a-form-item style="width:10%" v-bind="validateInfos.lon1">
                 <a-input  v-model:value="modelRef.lon1"> </a-input>
               </a-form-item>
               <p> &nbsp;纬度：</p>
-              <a-form-item style="width:5%" v-bind="validateInfos.lat0">
+              <a-form-item style="width:10%" v-bind="validateInfos.lat0">
                 <a-input  v-model:value="modelRef.lat0"> </a-input>
               </a-form-item>
               {{ " - " }}
-              <a-form-item style="width:5%" v-bind="validateInfos.lat1">
+              <a-form-item style="width:10%" v-bind="validateInfos.lat1">
                 <a-input  v-model:value="modelRef.lat1"> </a-input>
               </a-form-item>
               <p> &nbsp;&nbsp;&nbsp;</p>
@@ -117,7 +86,8 @@
                       :description="item.coord + '; ' + item.time"
                     >
                       <template #title>
-                        <a>{{ item.title.split(".")[0] }}</a>
+                        <a>{{ item.title}}</a>
+                       <!--  .split(".")[0]  -->
                       </template>
                       <template #avatar>
                         <a-avatar
@@ -186,8 +156,7 @@ export default defineComponent({
     const pageSize = ref(10);
     const modelRef = reactive({
       searchtype: "",
-      city: "",
-      county: "",
+      reigonname:"",
       lat0:"",
       lat1:"",
       lon0:"",
@@ -222,13 +191,7 @@ export default defineComponent({
           message: "",
         },
       ],
-      city: [
-        {
-          required: true,
-          message: "",
-        },
-      ],
-      county: [
+      reigonname: [
         {
           required: true,
           message: "",
@@ -511,8 +474,7 @@ function useSearchData(store, value, options) {
     const params = {
       params: {
         type: options.searchtype,
-        citya: options.city,
-        countya:options.county,
+        reigonnamea: options.reigonname,
         lat0a: options.lat0,
         lat1a: options.lat1,
         lon0a: options.lon0,
