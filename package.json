@@ -14,13 +14,14 @@
         "ant-design-vue": "^2.2.2",
         "axios": "^0.21.1",
         "cesium": "^1.80.0",
-        "js-cookie": "^3.0.0",
+        "js-cookie": "^3.0.1",
         "libgif": "^0.0.3",
         "vue": "^3.0.5",
         "vue-router": "^4.0.10",
         "vuex": "^4.0.2"
     },
     "devDependencies": {
+        "@types/js-cookie": "^3.0.2",
         "@vitejs/plugin-vue": "^1.2.1",
         "@vue/compiler-sfc": "^3.0.5",
         "vite": "^2.2.1",
