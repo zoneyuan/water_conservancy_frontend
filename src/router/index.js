@@ -25,6 +25,7 @@ const router = createRouter({
                 { path: 'homepage', name: 'homepage', component: () => import('views/Home/HomePage.vue') },
                 { path: 'geodata', name: 'geodata', component: () => import('views/Home/GeoData.vue') },
                 { path: 'searchdata', name: 'searchdata', component: () => import('views/Home/SearchData.vue') },
+                { path: 'construction', name: 'construction', component: () => import('views/Home/Construction.vue') },
                 { path: 'service', name: 'service', component: () => import('views/Home/Service.vue') },
                 { path: 'application', name: 'application', component: () => import('views/Home/Application.vue') },
                 { path: 'cadviewer', name: 'cadviewer', component: () => import('views/Home/CadViewer.vue') },
